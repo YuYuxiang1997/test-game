@@ -1,0 +1,43 @@
+{
+  "$GMObject":"",
+  "%Name":"obj_food_tab",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"obj_food_tab",
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obJ_resource_tab_main","path":"objects/obJ_resource_tab_main/obJ_resource_tab_main.yy",},"propertyId":{"name":"resource_tab_id","path":"objects/obJ_resource_tab_main/obJ_resource_tab_main.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"0",},
+  ],
+  "parent":{
+    "name":"resource tabs",
+    "path":"folders/Objects/resource tabs.yy",
+  },
+  "parentObjectId":{
+    "name":"obJ_resource_tab_main",
+    "path":"objects/obJ_resource_tab_main/obJ_resource_tab_main.yy",
+  },
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"food_tab",
+    "path":"sprites/food_tab/food_tab.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
