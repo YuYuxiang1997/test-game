@@ -1,5 +1,6 @@
-num = 0
-
+total_gold = 0
+population = 0
+log = 0
 
 food_ins = new ResourceNode("food");
 food_ins.instance.nodeid = 0;

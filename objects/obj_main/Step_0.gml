@@ -2,4 +2,8 @@
 // You can write your code in this editor
 var _income = get_total_income()
 
-num += _income/60
+total_gold += _income/60
+
+population = node_ins[0].level * get_resource_multiplier("population")
+
+log += node_ins[1].level * get_resource_multiplier("log") / 60

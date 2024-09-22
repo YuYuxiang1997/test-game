@@ -41,14 +41,14 @@ function ResourceNode(_name) constructor{
 		return base_cost*power(cost_factor,level)
 	}
 	income = function() {
-		return base_gain*level 
+		return base_gain*level*get_resource_multiplier(name)
 	}
 }
 
 function upgrade_resource_node(_nodeid) {
 	var _node_struct = obj_main.node_ins[_nodeid]
-	if (obj_main.num >= _node_struct.cost()) {
-		obj_main.num -= _node_struct.cost()
+	if (obj_main.total_gold >= _node_struct.cost()) {
+		obj_main.total_gold -= _node_struct.cost()
 		_node_struct.level += 1
 	}
 }
@@ -60,4 +60,17 @@ function get_total_income() {
 		_income += _node.income()
 	}
 	return _income
+}
+
+function get_resource_multiplier(_item_name) {
+	var _mult = 1
+	//Population multiplier
+	if (array_contains(["food","wood","ore"],_item_name)){
+		_mult *= get_idle_population_boost()
+	}
+	return _mult
+}
+
+function get_idle_population_boost() {
+	return 1+(0.1*obj_main.population)
 }
