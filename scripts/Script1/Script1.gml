@@ -14,12 +14,6 @@ function print_num(_num) {
 	}
 }
 
-function Upgrade (_cost,_name) constructor{
-	bought = false;
-	cost = _cost;
-	name = _name;
-}
-
 function ResourceNode(_name) constructor{
 	name = _name;
 	level = 0
@@ -73,4 +67,10 @@ function get_resource_multiplier(_item_name) {
 
 function get_idle_population_boost() {
 	return 1+(0.1*obj_main.population)
+}
+
+function upgrade_log_upgrade(_upgradeid) {
+}
+
+function draw_upgrade(_upgradeid){
 }
