@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"script_log_upgrades",
+  "%Name":"resource_nodes",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"script_log_upgrades",
+  "name":"resource_nodes",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

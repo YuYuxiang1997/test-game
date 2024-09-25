@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Script1",
+  "%Name":"log_upgrades",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Script1",
+  "name":"log_upgrades",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"script_tab",
+  "%Name":"draw_tabs",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"script_tab",
+  "name":"draw_tabs",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

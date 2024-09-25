@@ -1,3 +1,3 @@
 /// @description Insert description here
 // You can write your code in this editor
-total_gold += 10000
+game_state.log += 10000

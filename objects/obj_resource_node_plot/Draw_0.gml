@@ -1,4 +1,3 @@
 /// @description Insert description here
 // You can write your code in this editor
-
-obj_main.game_state.total_gold += 1
+draw_resource_plot(plot_id)
