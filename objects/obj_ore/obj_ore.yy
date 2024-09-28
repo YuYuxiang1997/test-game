@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"ore",
-    "path":"sprites/ore/ore.yy",
+    "name":"spr_ore",
+    "path":"sprites/spr_ore/spr_ore.yy",
   },
   "spriteMaskId":null,
   "visible":true,

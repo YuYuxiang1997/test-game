@@ -1,0 +1,2 @@
+show_debug_message(node_type)
+pick_resource(node_type,node_slot)

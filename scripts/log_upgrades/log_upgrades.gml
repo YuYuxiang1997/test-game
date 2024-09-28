@@ -55,6 +55,9 @@ function draw_upgrade(_id) {
 }
 
 function buy_upgrade(_id) {
+	if (get_active_screen() != SCREENS.BASE) {
+		return
+	}
 	var _upgrade = get_upgrade(_id)
 	if (obj_main.game_state.log >= _upgrade.cost) {
 		obj_main.game_state.log -= _upgrade.cost

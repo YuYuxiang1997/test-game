@@ -1,4 +1,4 @@
-function print_num(_num) {
+function print_num(_num,_round) {
 	var _counter = 0
 	if (_num > 9999) {
 		while (_num >= 10) {
@@ -6,8 +6,10 @@ function print_num(_num) {
 			_counter ++ 
 		}
 		return string_concat(round(_num*100)/100,"e",_counter)
-	} else {
+	} else if (_round) {
 		return round(_num)
+	} else {
+		return _num
 	}
 }
 

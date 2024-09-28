@@ -6,6 +6,11 @@ enum TABS {
 	ORE,
 }
 
+enum SCREENS {
+	BASE,
+	PICK_RESOURCE_NODE,
+}
+
 function init_state() {
 	var _resource_node_slots = []
 	for (var _i = 0; _i < 25; _i++) {
@@ -22,10 +27,17 @@ function init_state() {
 		resource_node_slots : _resource_node_slots,
 		log_upgrades: [],
 		active_tab: TABS.NOTHING,
+		active_screen: SCREENS.BASE,
 	
 		get_gold : function() {return total_gold},
 	}
 }
+
+function get_active_screen() {
+	return obj_main.game_state.active_screen
+}
+
+function set_active_screen(_screen) {obj_main.game_state.active_screen = _screen}
 
 function get_population() {
 	var _sum = 0
@@ -58,8 +70,7 @@ function get_log_income() {
 }
 
 function get_income(_g) {
-	return get_income_from(RESOURCE_NODES.FOOD)
-	//return get_income_from(RESOURCE_NODES.FOOD) + get_income_from(RESOURCE_NODES.WOOD) + get_income_from(RESOURCE_NODES.ORE)
+	return get_income_from(RESOURCE_NODES.FOOD) + get_income_from(RESOURCE_NODES.WOOD) + get_income_from(RESOURCE_NODES.ORE)
 }
 
 function get_income_from(_node_enum) {
