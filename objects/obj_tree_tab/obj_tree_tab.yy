@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"tree_tab",
-    "path":"sprites/tree_tab/tree_tab.yy",
+    "name":"spr_tree_tab",
+    "path":"sprites/spr_tree_tab/spr_tree_tab.yy",
   },
   "spriteMaskId":null,
   "visible":true,

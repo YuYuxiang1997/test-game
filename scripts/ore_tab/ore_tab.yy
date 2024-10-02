@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"log_upgrades",
+  "%Name":"ore_tab",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"log_upgrades",
+  "name":"ore_tab",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

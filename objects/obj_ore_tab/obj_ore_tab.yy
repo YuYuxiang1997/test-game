@@ -33,12 +33,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"ore_tab",
-    "path":"sprites/ore_tab/ore_tab.yy",
+    "name":"spr_ore_tab",
+    "path":"sprites/spr_ore_tab/spr_ore_tab.yy",
   },
   "spriteMaskId":{
-    "name":"ore_tab",
-    "path":"sprites/ore_tab/ore_tab.yy",
+    "name":"spr_ore_tab",
+    "path":"sprites/spr_ore_tab/spr_ore_tab.yy",
   },
   "visible":true,
 }

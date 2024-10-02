@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"food_tab",
-    "path":"sprites/food_tab/food_tab.yy",
+    "name":"spr_food_tab",
+    "path":"sprites/spr_food_tab/spr_food_tab.yy",
   },
   "spriteMaskId":null,
   "visible":true,

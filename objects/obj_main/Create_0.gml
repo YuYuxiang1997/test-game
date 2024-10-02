@@ -11,3 +11,4 @@ instance_create_layer(964,0,"Instances",obj_ore_tab)
 create_log_upgrades()
 
 log_upgrades_ins = []
+population_tab_buttons_ins = []

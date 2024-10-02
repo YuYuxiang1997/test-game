@@ -13,6 +13,6 @@ function print_num(_num,_round) {
 	}
 }
 
-function get_idle_population_boost(_p){
-	return 1+(0.1*_p)
+function get_idle_population_boost(){
+	return 1+(0.1*get_idle_pop())
 }

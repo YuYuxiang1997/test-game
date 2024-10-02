@@ -11,6 +11,11 @@ enum SCREENS {
 	PICK_RESOURCE_NODE,
 }
 
+enum POPULATION_ALLOC {
+	WOOD,
+	ORE,
+}
+
 function init_state() {
 	var _resource_node_slots = []
 	for (var _i = 0; _i < 25; _i++) {
@@ -20,8 +25,14 @@ function init_state() {
 	return {
 		total_gold : 0,
 		population_mult : 1,
+		population_alloc : {
+			wood: 0,
+			ore: 0,
+		},
 		log : 0,
+		upgrade_speed_mult : 1,
 		resource_node_production_mult : 1,
+		currently_upgrading_id : -1,
 	
 		resource_nodes : [],
 		resource_node_slots : _resource_node_slots,
@@ -48,6 +59,31 @@ function get_population() {
 		}
 	}
 	return _sum*obj_main.game_state.population_mult
+}
+
+function get_idle_pop() {
+	var _pop_alloc = obj_main.game_state.population_alloc
+	return get_population() - _pop_alloc.wood - _pop_alloc.ore 
+}
+
+function get_builders() {
+	return obj_main.game_state.population_alloc.wood
+}
+
+function get_upgrade_speed() {
+	return get_builders()*obj_main.game_state.upgrade_speed_mult
+}
+
+function set_currently_upgrading(_id) {
+	obj_main.game_state.currently_upgrading_id = _id
+}
+
+function get_currently_upgrading() {
+	return get_upgrade(obj_main.game_state.currently_upgrading_id)
+}
+
+function get_blacksmiths() {
+	return obj_main.game_state.population_alloc.ore
 }
 
 function get_gold() {
@@ -83,7 +119,7 @@ function get_income_from(_node_enum) {
 		var _test = _i
 		var _len = array_length(obj_main.game_state.resource_nodes)
 		if (_node.type == _node_enum) {
-			_sum += _node.base_gain*_node.level*get_idle_population_boost(get_population())*obj_main.game_state.resource_node_production_mult
+			_sum += _node.base_gain*_node.level*get_idle_population_boost()*obj_main.game_state.resource_node_production_mult
 		}
 	}
 	return _sum
@@ -92,6 +128,7 @@ function get_income_from(_node_enum) {
 function update_state(_game_state) {
 	_game_state.total_gold += get_income(_game_state)*delta_time/1000000
 	_game_state.log += get_log_income()*delta_time/1000000
+	step_upgrade()
 }
 
 function get_node_slot(_nodeid) {
