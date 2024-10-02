@@ -17,8 +17,7 @@ function draw_wood_tab() {
 	if (obj_main.game_state.active_tab == TABS.LOG) { 
 		draw_text(1100,100,"Wood")
 		draw_text(1100,200,string_concat("+",print_num(get_income_from(RESOURCE_NODES.WOOD),false),"/s (",_percentage,"%)"))
-		
-		//Upgrades
+	
 		draw_text(1100,300,string_concat("Logs: ",print_num(obj_main.game_state.log,true)))
 	}
 }
