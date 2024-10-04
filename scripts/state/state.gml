@@ -30,13 +30,17 @@ function init_state() {
 			ore: 0,
 		},
 		log : 0,
+		log_mult : 1,
 		upgrade_speed_mult : 1,
 		resource_node_production_mult : 1,
 		currently_upgrading_id : -1,
+		
+		metal_mult : 1,
 	
 		resource_nodes : [],
 		resource_node_slots : _resource_node_slots,
 		log_upgrades: [],
+		trinkets: [],
 		active_tab: TABS.NOTHING,
 		active_screen: SCREENS.BASE,
 	
@@ -102,8 +106,20 @@ function get_log_income() {
 			_sum += _node.level
 		}
 	}
-	return _sum
+	return _sum*obj_main.game_state.log_mult
 }
+
+function get_metal_income() {
+	var _sum = 0
+	for (var _i = 0; _i < array_length(obj_main.game_state.resource_nodes); _i++) {
+		var _node = obj_main.game_state.resource_nodes[_i]
+		if (_node.type == RESOURCE_NODES.ORE) {
+			_sum += _node.level
+		}
+	}
+	return _sum*obj_main.game_state.metal_mult
+}
+
 
 function get_income(_g) {
 	return get_income_from(RESOURCE_NODES.FOOD) + get_income_from(RESOURCE_NODES.WOOD) + get_income_from(RESOURCE_NODES.ORE)

@@ -98,8 +98,8 @@ function render_pick_resource_screen(_nodeslot) {
 
 function pick_resource(_nodetype,_node_id) {
 	var _nodeslot = get_node_slot(_node_id)
-	var _x = _nodeslot.ins.x
-	var _y = _nodeslot.ins.y
+	var _x = _nodeslot.ins.map_x
+	var _y = _nodeslot.ins.map_y
 	show_debug_message(_nodetype)
 	var _resource_node
 	switch (_nodetype) {
@@ -131,6 +131,7 @@ function pick_resource(_nodetype,_node_id) {
 	}
 	instance_destroy(_nodeslot.ins)
 	_nodeslot.slot_bought = true
+	obj_main.blocking_flags.pick_resource_flag = true
 }
 
 function draw_resource_nodes(_nodeid) {
