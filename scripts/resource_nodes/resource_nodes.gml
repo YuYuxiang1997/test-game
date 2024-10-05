@@ -28,6 +28,7 @@ function ResourceNodeSlot(_number) constructor{
 	var _ins = instance_create_layer(_x,_y,"Instances",obj_resource_node_plot)
 	ins = _ins
 	_ins.plot_id = slot_id
+	hovered = false
 }
 
 function ResourceNode(_type,_x,_y) constructor{
@@ -117,9 +118,14 @@ function upgrade_resource_node(_nodeid) {
 }
 
 function draw_resource_plot(_nodeid) {
+	_resource_plot = obj_main.game_state.resource_node_slots[_nodeid]
 	image_xscale = GLOBAL_X_SCALING
 	image_yscale = GLOBAL_Y_SCALING
-	draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,0,c_white,1)
+	if _resource_plot.hovered {
+		draw_sprite_ext(sprite_index,1,x,y,image_xscale,image_yscale,0,c_white,1)
+	} else {
+		draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,1)
+	}
 	var _cost = get_plot_cost(_nodeid)
 	if (get_gold() >= _cost) {
 		draw_set_color(c_green)
@@ -210,4 +216,14 @@ function draw_resource_nodes(_nodeid) {
 	draw_text(x+60,y+10,print_num(get_resource_node(_nodeid).level,true))
 	draw_set_halign(fa_center)
 	draw_set_color(c_white)
+}
+
+function activate_hover(_node_id) {
+	var _nodeslot = get_node_slot(_node_id)
+	_nodeslot.hovered = true
+}
+
+function deactivate_hover(_node_id) {
+	var _nodeslot = get_node_slot(_node_id)
+	_nodeslot.hovered = false
 }
