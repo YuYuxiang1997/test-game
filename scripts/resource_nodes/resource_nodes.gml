@@ -8,8 +8,8 @@ enum RESOURCE_NODES {
 #macro ORE_UNLOCK_COST 1000000
 #macro X_CENTRE 450
 #macro Y_CENTRE 400
-#macro X_SPACING 100
-#macro Y_SPACING 100
+#macro X_SPACING 96
+#macro Y_SPACING 96
 #macro GLOBAL_X_SCALING 3
 #macro GLOBAL_Y_SCALING 3
 
@@ -119,13 +119,17 @@ function upgrade_resource_node(_nodeid) {
 
 function draw_resource_plot(_nodeid) {
 	_resource_plot = obj_main.game_state.resource_node_slots[_nodeid]
+	_use_frame = 2
+	_use_alpha = 0.5
+	if _resource_plot.hovered {
+		_use_frame = 3
+	}
+	if (obj_main.game_state.total_gold >= get_plot_cost(_nodeid)){
+		_use_alpha = 1
+	}
 	image_xscale = GLOBAL_X_SCALING
 	image_yscale = GLOBAL_Y_SCALING
-	if _resource_plot.hovered {
-		draw_sprite_ext(sprite_index,1,x,y,image_xscale,image_yscale,0,c_white,1)
-	} else {
-		draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,1)
-	}
+	draw_sprite_ext(sprite_index,_use_frame,x,y,image_xscale,image_yscale,0,c_white,_use_alpha)
 	var _cost = get_plot_cost(_nodeid)
 	if (get_gold() >= _cost) {
 		draw_set_color(c_green)
@@ -209,7 +213,8 @@ function draw_gold_tile() {
 function draw_resource_nodes(_nodeid) {
 	image_xscale = GLOBAL_X_SCALING
 	image_yscale = GLOBAL_Y_SCALING
-	draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,0,c_white,1)
+	_use_frame = 1
+	draw_sprite_ext(sprite_index,_use_frame,x,y,image_xscale,image_yscale,0,c_white,1)
 	draw_text(x+32,y+80,print_num(get_resource_node(_nodeid).cost(),true))
 	draw_set_color(c_green)
 	draw_set_halign(fa_right)

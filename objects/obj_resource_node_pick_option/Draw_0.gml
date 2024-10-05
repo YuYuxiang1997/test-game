@@ -1,6 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
-draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,0,c_white,1)
+var _use_frame = 1
+draw_sprite_ext(sprite_index,_use_frame,x,y,image_xscale,image_yscale,0,c_white,1)
 draw_set_color(c_white)
 switch (node_type) {
 	case RESOURCE_NODES.FOOD:
