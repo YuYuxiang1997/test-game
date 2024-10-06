@@ -6,16 +6,29 @@ enum RESOURCE_NODES {
 
 #macro WOOD_UNLOCK_COST 1000
 #macro ORE_UNLOCK_COST 1000000
+#macro X_CENTRE 450
+#macro Y_CENTRE 400
+#macro X_SPACING 96
+#macro Y_SPACING 96
+#macro GLOBAL_X_SCALING 3
+#macro GLOBAL_Y_SCALING 3
+
+function GoldTile() constructor{
+	var _x = X_CENTRE
+	var _y = Y_CENTRE
+	var _ins = instance_create_layer(_x,_y,"Instances",obj_gold)
+}
 
 function ResourceNodeSlot(_number) constructor{
 	slot_id = _number
 	slot_bought = false
 	slot_cost = 10*power(10,_number)
-	var _x = 50+80*(_number mod 5)
-	var _y = 50+130*(_number div 5)
+	var _x = derive_ring_x(_number + 1)
+	var _y = derive_ring_y(_number + 1)
 	var _ins = instance_create_layer(_x,_y,"Instances",obj_resource_node_plot)
 	ins = _ins
 	_ins.plot_id = slot_id
+	hovered = false
 }
 
 function ResourceNode(_type,_x,_y) constructor{
@@ -43,6 +56,52 @@ function ResourceNode(_type,_x,_y) constructor{
 	obj_main.global_node_id += 1
 }
 
+function derive_ring_position(_number) {
+	return ceil(sqrt(_number+1)) div 2
+}
+
+function derive_ring_x(_number) {
+	var _x_centre = X_CENTRE
+	var _x_spacing = X_SPACING
+	var _ring_pos = derive_ring_position(_number)
+	if (_ring_pos == 0) {
+		return _x_centre
+	}
+	var _pos_within_ring = _number - power(2 * _ring_pos - 1,2)
+	var _side = _pos_within_ring div (2 * _ring_pos)
+	var _pos_within_side = _pos_within_ring - _side * 2 * _ring_pos
+	if (_side == 0) {
+		return _x_centre + _x_spacing * (_pos_within_side - _ring_pos + 1)
+	} else if (_side == 1) {
+		return _x_centre + _x_spacing * _ring_pos
+	} else if (_side == 2) {
+		return _x_centre - _x_spacing * (_pos_within_side - _ring_pos + 1)
+	} else if (_side == 3) {
+		return _x_centre - _x_spacing * _ring_pos
+	}
+}
+
+function derive_ring_y(_number) {
+	var _y_centre = Y_CENTRE
+	var _y_spacing = Y_SPACING
+	var _ring_pos = derive_ring_position(_number)
+	if (_ring_pos == 0) {
+		return _y_centre
+	}
+	var _pos_within_ring = _number - power(2 * _ring_pos - 1,2)
+	var _side = _pos_within_ring div (2 * _ring_pos)
+	var _pos_within_side = _pos_within_ring - _side * 2 * _ring_pos
+	if (_side == 0) {
+		return _y_centre - _y_spacing * _ring_pos
+	} else if (_side == 1) {
+		return _y_centre + _y_spacing * (_pos_within_side - _ring_pos + 1)
+	} else if (_side == 2) {
+		return _y_centre + _y_spacing * _ring_pos
+	} else if (_side == 3) {
+		return _y_centre - _y_spacing * (_pos_within_side - _ring_pos + 1)
+	}
+}
+
 function get_plot_cost(_nodeid) {
 	return obj_main.game_state.resource_node_slots[_nodeid].slot_cost
 }
@@ -59,7 +118,18 @@ function upgrade_resource_node(_nodeid) {
 }
 
 function draw_resource_plot(_nodeid) {
-	draw_sprite(sprite_index,-1,x,y)
+	_resource_plot = obj_main.game_state.resource_node_slots[_nodeid]
+	_use_frame = 2
+	_use_alpha = 0.5
+	if _resource_plot.hovered {
+		_use_frame = 3
+	}
+	if (obj_main.game_state.total_gold >= get_plot_cost(_nodeid)){
+		_use_alpha = 1
+	}
+	image_xscale = GLOBAL_X_SCALING
+	image_yscale = GLOBAL_Y_SCALING
+	draw_sprite_ext(sprite_index,_use_frame,x,y,image_xscale,image_yscale,0,c_white,_use_alpha)
 	var _cost = get_plot_cost(_nodeid)
 	if (get_gold() >= _cost) {
 		draw_set_color(c_green)
@@ -134,14 +204,31 @@ function pick_resource(_nodetype,_node_id) {
 	obj_main.blocking_flags.pick_resource_flag = true
 }
 
-function draw_resource_nodes(_nodeid) {
-	image_xscale = 2
-	image_yscale = 2
+function draw_gold_tile() {
+	image_xscale = GLOBAL_X_SCALING
+	image_yscale = GLOBAL_Y_SCALING
 	draw_sprite_ext(sprite_index,-1,x,y,image_xscale,image_yscale,0,c_white,1)
+}
+
+function draw_resource_nodes(_nodeid) {
+	image_xscale = GLOBAL_X_SCALING
+	image_yscale = GLOBAL_Y_SCALING
+	_use_frame = 1
+	draw_sprite_ext(sprite_index,_use_frame,x,y,image_xscale,image_yscale,0,c_white,1)
 	draw_text(x+32,y+80,print_num(get_resource_node(_nodeid).cost(),true))
 	draw_set_color(c_green)
 	draw_set_halign(fa_right)
 	draw_text(x+60,y+10,print_num(get_resource_node(_nodeid).level,true))
 	draw_set_halign(fa_center)
 	draw_set_color(c_white)
+}
+
+function activate_hover(_node_id) {
+	var _nodeslot = get_node_slot(_node_id)
+	_nodeslot.hovered = true
+}
+
+function deactivate_hover(_node_id) {
+	var _nodeslot = get_node_slot(_node_id)
+	_nodeslot.hovered = false
 }
