@@ -140,6 +140,10 @@ function draw_resource_plot(_nodeid) {
 		draw_text(x+32,y+32,print_num(_cost))
 		draw_set_color(c_white)
 	}
+	if _resource_plot.hovered {
+		tooltip_string = string_concat("This patch of land costs ", print_num(_resource_plot.slot_cost), " gold.")
+		draw_text(50 + string_width(tooltip_string) / 2, 50, tooltip_string)
+	}
 }
 
 function buy_node_plot(_nodeid) {
