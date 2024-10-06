@@ -11,8 +11,8 @@
   "name":"obj_gold",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"resource objects",
+    "path":"folders/Objects/resource objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

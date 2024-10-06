@@ -1,3 +1,5 @@
+#macro CASCADE_NUMBER_LIFETIME 2
+
 function print_num(_num,_round) {
 	var _counter = 0
 	if (_num > 9999) {
@@ -21,7 +23,7 @@ function get_idle_population_boost(){
 function draw_circular_bar(_arg0 ,_arg1 ,_value, _max, _colour, _radius, _transparency, _width) {
     var _i, _len, _tx, _ty, _val;
     
-    var _numberofsections = 60 // there is no draw_get_circle_precision() else I would use that here
+    var _numberofsections = 360 // there is no draw_get_circle_precision() else I would use that here
     var _sizeofsection = 360/_numberofsections
     
     _val = (argument2/argument3) * _numberofsections 
@@ -62,7 +64,6 @@ function draw_circular_bar(_arg0 ,_arg1 ,_value, _max, _colour, _radius, _transp
         draw_surface(_piesurface,argument0-argument5, argument1-argument5)
         
         surface_free(_piesurface)
-        
+		draw_set_color(c_white)   
     }
-    
 }

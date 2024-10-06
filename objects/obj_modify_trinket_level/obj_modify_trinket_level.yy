@@ -9,8 +9,8 @@
   "name":"obj_modify_trinket_level",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"ore tab",
+    "path":"folders/Objects/ore tab.yy",
   },
   "parentObjectId":null,
   "persistent":false,

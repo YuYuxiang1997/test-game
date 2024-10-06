@@ -13,8 +13,8 @@
   "name":"obj_resource_node_plot",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"resource objects",
+    "path":"folders/Objects/resource objects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

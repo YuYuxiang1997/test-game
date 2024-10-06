@@ -47,6 +47,10 @@ function init_state() {
 		active_screen: SCREENS.BASE,
 	
 		get_gold : function() {return total_gold},
+		
+		click_income : function() {
+			return get_trinket_effect(TRINKET.CLICK_POWER)
+		}
 	}
 }
 
@@ -77,7 +81,7 @@ function get_builders() {
 }
 
 function get_upgrade_speed() {
-	return get_builders()*obj_main.game_state.upgrade_speed_mult
+	return get_builders()*obj_main.game_state.upgrade_speed_mult*get_trinket_effect(TRINKET.BUILD_SPEED)
 }
 
 function set_currently_upgrading(_id) {
@@ -108,6 +112,7 @@ function get_log_income() {
 			_sum += _node.level
 		}
 	}
+	_sum *= get_trinket_effect(TRINKET.LOG_GAIN)
 	return _sum*obj_main.game_state.log_mult
 }
 
@@ -130,8 +135,6 @@ function get_income(_g) {
 function get_income_from(_node_enum) {
 	
 	var _sum = 0
-	if (_node_enum == RESOURCE_NODES.FOOD) {
-	}
 	for (var _i = 0; _i < array_length(obj_main.game_state.resource_nodes); _i++) {
 		var _node = obj_main.game_state.resource_nodes[_i]
 		var _test = _i
@@ -139,6 +142,13 @@ function get_income_from(_node_enum) {
 		if (_node.type == _node_enum) {
 			_sum += _node.base_gain*_node.level*get_idle_population_boost()*obj_main.game_state.resource_node_production_mult
 		}
+	}
+	if (_node_enum == RESOURCE_NODES.FOOD) {
+		_sum *= get_trinket_effect(TRINKET.FOOD_PROD)
+	} else if (_node_enum == RESOURCE_NODES.WOOD) {
+		_sum *= get_trinket_effect(TRINKET.WOOD_PROD)
+	} else if (_node_enum == RESOURCE_NODES.ORE) {
+		_sum *= get_trinket_effect(TRINKET.ORE_PROD)
 	}
 	return _sum
 }
