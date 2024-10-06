@@ -2,10 +2,10 @@
 // You can write your code in this editor
 draw_set_font(fnt_money)
 draw_set_halign(fa_right)
-draw_text(700,100,print_num(game_state.get_gold(),true))
+draw_text(498,50,print_num(game_state.get_gold(),true))
 
 draw_set_font(fnt_money_small)
-draw_text(700,200,string_concat("+",print_num(get_income(game_state),false),"/s"))
+draw_text(498,150,string_concat("+",print_num(get_income(game_state),false),"/s"))
 draw_set_halign(fa_center)
 
 draw_line_width(899,32,1500,32,3)

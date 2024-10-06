@@ -18,9 +18,10 @@ enum POPULATION_ALLOC {
 
 function init_state() {
 	var _resource_node_slots = []
-	for (var _i = 0; _i < 25; _i++) {
+	for (var _i = 0; _i < 24; _i++) {
 		array_push(_resource_node_slots, new ResourceNodeSlot(_i))
 	}
+	var _gold_tile = new GoldTile()
 	
 	return {
 		total_gold : 0,
@@ -37,6 +38,7 @@ function init_state() {
 		
 		metal_mult : 1,
 	
+		gold_tile : _gold_tile,
 		resource_nodes : [],
 		resource_node_slots : _resource_node_slots,
 		log_upgrades: [],
