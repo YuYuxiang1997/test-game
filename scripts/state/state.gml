@@ -1,10 +1,10 @@
 // Update values directly, never read directly
 enum TABS {
-	NOTHING,
 	FOOD,
 	LOG,
 	ORE,
 	PRESTIGE,
+	NOTHING
 }
 
 enum SCREENS {

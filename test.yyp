@@ -83,6 +83,7 @@
     {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},},
     {"id":{"name":"spr_food_tab","path":"sprites/spr_food_tab/spr_food_tab.yy",},},
     {"id":{"name":"spr_food","path":"sprites/spr_food/spr_food.yy",},},
+    {"id":{"name":"spr_info_box","path":"sprites/spr_info_box/spr_info_box.yy",},},
     {"id":{"name":"spr_obelisk","path":"sprites/spr_obelisk/spr_obelisk.yy",},},
     {"id":{"name":"spr_ore_tab","path":"sprites/spr_ore_tab/spr_ore_tab.yy",},},
     {"id":{"name":"spr_ore","path":"sprites/spr_ore/spr_ore.yy",},},

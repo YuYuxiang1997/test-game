@@ -141,6 +141,7 @@ function draw_resource_plot(_nodeid) {
 		draw_set_color(c_white)
 	}
 	if _resource_plot.hovered {
+		draw_sprite_ext(spr_info_box, -1, 0, 0, 6, 2, 0, c_white, 1)
 		tooltip_string = string_concat("This patch of land costs ", print_num(_resource_plot.slot_cost), " gold.")
 		draw_text(50 + string_width(tooltip_string) / 2, 50, tooltip_string)
 	}

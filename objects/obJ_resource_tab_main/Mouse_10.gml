@@ -3,4 +3,4 @@
 if (get_active_screen() != SCREENS.BASE) {
 	return
 }
-activate_hover(plot_id)
+hovered = true
