@@ -1,5 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-if (obj_main.game_state.active_tab == TABS.ORE) {
-	toggle_trinket(type)
-}
+image_xscale = 6
+image_yscale = 2
+sub_img = 0

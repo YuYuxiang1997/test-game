@@ -11,4 +11,6 @@ switch (resource_tab_id)
 	case 2:
 		obj_main.game_state.active_tab = TABS.ORE
 		break;
+	case 3:
+		obj_main.game_state.active_tab = TABS.PRESTIGE
 }

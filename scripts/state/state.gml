@@ -4,6 +4,7 @@ enum TABS {
 	FOOD,
 	LOG,
 	ORE,
+	PRESTIGE,
 }
 
 enum SCREENS {
@@ -43,6 +44,9 @@ function init_state() {
 		resource_node_slots : _resource_node_slots,
 		log_upgrades: [],
 		trinkets: [],
+		
+		obelisk: new Obelisk(),
+		
 		active_tab: TABS.NOTHING,
 		active_screen: SCREENS.BASE,
 	
